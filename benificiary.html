@@ -1,0 +1,16 @@
+<?php 
+// to start php file
+
+$accountno=$_GET['accountNo'];
+$benaccountno=$_GET['benaccountno'];
+$amount=$_GET['amount']; I initialized the accountno, benaccountno, and amount as an accountNo, benaccountno, and amount. This is how to connect the database as shown below: $connect = mysql_connect("localhost","root","") or die ("Couldn't connect!");
+mysql_select_db("banking") or die("Couldn't find db"); banking: is the database of my system. “”: means I did not have any password. This query is for selecting or reading the account number from an account table. $query = "SELECT * FROM account WHERE AccountNo='" . $accountno; $query .="'";
+
+And now it checks if the available balance is less than the amount you want to pay the beneficiary. if ($balance > $amount) { $balance=$balance-$amount;
+$sql= "UPDATE account SET AccountBalance='" .$balance . "' WHERE "; $sql.= "AccountNo='" .$accountno ."'";
+
+$result = mysql_query($sql);
+For this condition is to copy the beneficiary payment to the transaction table. if ($result > 0){ $sql2 = "INSERT into transaction (AccountNo,TypeOfTransaction,BeneficiaryAccountNo,Amount)"; $sql2. = "VALUES ('"; $sql2 .= $accountno; $sql2 .= "','"; $sql2 .= "','EFT Transfer','"; $sql2 .= $benaccountno; $sql2 .= "','"; $sql2 .= $amount; $sql2 .= "')"; $result = mysql_query($sql2);
+//to close php file
+
+?>
