@@ -1,8 +1,5 @@
 
-<?php include('db.php');
-if(!$_SESSION['username']) header('Location: login.php')
-// Redirect to login if not a logged in user
-?>
+<?php include('db.php'); ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -18,22 +15,24 @@ if(!$_SESSION['username']) header('Location: login.php')
 				<div class="logo"><a href="index.php">SMART BANK <span>by Online Banking</span></a></div>
 				<a href="#menu" class="toggle"><span>Menu</span></a>
 			</header>
-			<div class="content">
-				<?php if (isset($_SESSION['success'])): ?>
-					<div class="error success">
-						<h3>
-							<?php
-							echo $_SESSION['success'];
-							unset($_SESSION['success']);
-							?>
-						</h3>
-					</div>
-				<?php endif ?>
-				<?php if (isset($_SESSION["username"])) : ?>
-				<p>Welcome <strong><?php echo $_SESSION['username'];?></strong> | <a href="logout.php" style="color: red;">Logout</a></p>
-				<p></p>
-			<?php endif?>
-		</div>
+			<?php if (isset($_SESSION['username'])): ?>
+				<div class="content">
+					<?php if (isset($_SESSION['success'])): ?>
+						<div class="error success">
+							<h3>
+								<?php
+								echo $_SESSION['success'];
+								unset($_SESSION['success']);
+								?>
+							</h3>
+						</div>
+					<?php endif ?>
+					<?php if (isset($_SESSION["username"])) : ?>
+					<p>Welcome <strong><?php echo $_SESSION['username'];?></strong> | <a href="logout.php" style="color: red;">Logout</a></p>
+					<p></p>
+				<?php endif?>
+			</div>
+		<?php endif?>
 
 		<!-- Nav -->
 			<nav id="menu">
@@ -53,8 +52,10 @@ if(!$_SESSION['username']) header('Location: login.php')
 				<div class="inner">
 					<h1>Online Banking</h1>
 					<p>The bast way to save<br />
+					<?php if (!isset($_SESSION['username'])): ?>
 					 <a href="https://templated.co/">Time</a> and  <a href="https://templated.co/license">Money</a>.</p>
-					<a href="login.html" class="button special scrolly">LOGIN HEAR</a>
+					<a href="login.php" class="button special scrolly">LOGIN HEAR</a>
+					<?php endif?>
 				</div>
 			</section>
 
