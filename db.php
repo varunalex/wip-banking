@@ -1,13 +1,13 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$uname = "root";
+$pw = "";
 $db = "banking";
 
 if(!isset($_SESSION)) session_start();
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $db);
+$conn = mysqli_connect($servername, $uname, $pw, $db);
 
 // Check connection
 if (!$conn) {

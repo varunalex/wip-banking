@@ -1,4 +1,8 @@
- 
+<?php include('db.php'); // Include databse
+if(isset($_SESSION['username'])) header('Location: index.php');
+// Redirect to index if user loggedin
+?>
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<title>Smart Bank-Online Banking</title>
@@ -29,22 +33,24 @@
  <div class="header">
 				<h2>Login</h2>
 			</div>
-			<form method="post" action="login.php">
+			<?php include('server/loginPross.php'); ?>
+			<form method="post" action="">
+			<?php include('errors.php'); ?>
 				<div class="input group">
-					<label>Username</label>
-					<input type="text" name="Usewrname">
+					<label>Email</label>
+					<input type="text" name="email" value="<?php if(isset($_POST['email'])) echo $_POST['email'] ?>">
 				</div>
 				
 				<div class="input group">
 					<label>Password</label>
-					<input type="text" name="password_1">
+					<input type="password" name="password">
 				</div>
 				<br>
 				<div class="input group">
 					<button type="submit" name="login" class="btn">Login</button>
 				</div>
 				<p>
-					Not yet a member? <a href="Register.php">sign up</a>
+					Not yet a member? <a href="register.php">sign up</a>
 				</p>
 
 			</form>

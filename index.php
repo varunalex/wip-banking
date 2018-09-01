@@ -1,8 +1,9 @@
 
+<?php include('db.php');
+if(!$_SESSION['username']) header('Location: login.php')
+// Redirect to login if not a logged in user
+?>
 <!DOCTYPE HTML>
-
-
-
 <html>
 	<head>
 		<title>Online Banking</title>
@@ -28,9 +29,9 @@
 						</h3>
 					</div>
 				<?php endif ?>
-				<?php if (isset($_SESSION["username"]))?>
-				<p>Welcome <strong><?php echo $_SESSION['username'];?></strong></p>
-				<p><a href="" style="color: red;">Logout</a></p>
+				<?php if (isset($_SESSION["username"])) : ?>
+				<p>Welcome <strong><?php echo $_SESSION['username'];?></strong> | <a href="logout.php" style="color: red;">Logout</a></p>
+				<p></p>
 			<?php endif?>
 		</div>
 

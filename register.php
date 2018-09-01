@@ -1,4 +1,7 @@
-<?php include('db.php'); ?>
+<?php include('db.php'); // Include databse
+if(isset($_SESSION['username'])) header('Location: index.php');
+// Redirect to index if user loggedin
+?>
 <!DOCTYPE HTML>
 
 <html>
@@ -30,27 +33,26 @@
 			<div class="header">
 				<h2>Register</h2>
 			</div>
-			<?php include('server.php'); ?>
+			<?php include('server/regPross.php'); ?>
 			<form method="post" action="">
 				<!-- display validation errors here-->
-				<?php 
-				 include('errors.php'); ?>
+				<?php include('errors.php'); ?>
 
 				<div class="input group">
 					<label>Username</label>
-					<input type="text" name="username">
+					<input type="text" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username'] ?>">
 				</div>
 				<div class="input group">
 					<label>Email</label>
-					<input type="text" name="email">
+					<input type="text" name="email" value="<?php if(isset($_POST['email'])) echo $_POST['email'] ?>" >
 				</div>
 				<div class="input group">
 					<label>Password</label>
-					<input type="text" name="password_1">
+					<input type="password" name="password_1">
 				</div>
 				<div class="input group">
 					<label>Confirm Password</label>
-					<input type="text" name="password_2">
+					<input type="password" name="password_2">
 				</div><br>
 				<div class="input group">
 					<button type="submit" name="register" class="btn">Register</button>
@@ -59,12 +61,7 @@
 					Alreedy a member? <a href="login.php">sign in</a>
 				</p>
 
-			</form>
-
-		
-
-		
-		
+			</form>		
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
