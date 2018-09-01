@@ -30,9 +30,11 @@
 			<div class="header">
 				<h2>Register</h2>
 			</div>
-			<form method="post" action="server.php">
+			<?php include('server.php'); ?>
+			<form method="post" action="">
 				<!-- display validation errors here-->
-				<?php include('errors.php'); ?>
+				<?php 
+				 include('errors.php'); ?>
 
 				<div class="input group">
 					<label>Username</label>

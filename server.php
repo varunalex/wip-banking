@@ -1,31 +1,24 @@
 <?php
-
-include('./db.php');
-
 $username = "";
 $email = "";
 $errors = array();
-
 // if the register button is cliked
 if (isset($_POST['register'])) {
 	// ensure that form fields are filled property
-	if (empty($username)) {
+	if (empty($_POST['username'])) {
 			array_push($errors,"Username is required");
-		
 	}
-	if (empty($email)) {
+	if (empty($_POST['email'])) {
 			array_push($errors,"email is required");
-		
 	}
-	if (empty($password_1)) {
+	if (empty($_POST['password_1'])) {
 			array_push($errors,"password is required");
+	} elseif (empty($_POST['password_2'])) {
+		array_push($errors,"confirm password is required");
 	}
-
-	if ($password_1 != $password_2){
+	elseif ($password_1 != $password_2){
 		array_push($errors,"The two oassword do not match");
 	}
-
-	$_SESSION['errors'] = $errors;
 
 	// if there are no errors, save user to database
 	if (count($errors) == 0){
@@ -43,9 +36,7 @@ if (isset($_POST['register'])) {
 		}
 		$_SESSION['username'] = $username;
 		$_SESSION['success'] = "You are now logged in";
-		header('location:index.php'); //rederect to home page
-	} else {
-		header('location:register.php');
+		// header('location:index.php'); //rederect to home page
 	}
 }
 ?>

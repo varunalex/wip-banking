@@ -1,8 +1,7 @@
 <?php
-if (isset($_SESSION['errors'])) {
-	$errors = $_SESSION['errors'];
-}
-else {$errors= [];} ?>
+if (!isset($errors)) {
+	$errors = [];
+} ?>
 <?php
 if(count($errors) > 0) { ?>
 <div class="error">
