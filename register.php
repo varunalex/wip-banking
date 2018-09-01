@@ -1,5 +1,4 @@
-<?php include('server.php');?>
-
+<?php include('db.php'); ?>
 <!DOCTYPE HTML>
 
 <html>
@@ -31,17 +30,17 @@
 			<div class="header">
 				<h2>Register</h2>
 			</div>
-			<form method="post" action="register.php">
+			<form method="post" action="server.php">
 				<!-- display validation errors here-->
 				<?php include('errors.php'); ?>
 
 				<div class="input group">
 					<label>Username</label>
-					<input type="text" name="Usewrname" value="<?php echo $Username; ?>">
+					<input type="text" name="username">
 				</div>
 				<div class="input group">
 					<label>Email</label>
-					<input type="text" name="Email" value="<?php echo $Email; ?>">
+					<input type="text" name="email">
 				</div>
 				<div class="input group">
 					<label>Password</label>
